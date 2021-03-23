@@ -1,38 +1,198 @@
-.App {
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  --darkcolor1: rgb(112, 51, 1);
+  --darkcolor2: rgb(1, 3, 112);
+  --lightcolor1: rgb(255, 123, 0);
+  --lightcolor2: rgb(0, 255, 255);
+  --lightcolor3: #999;
+  --inputHeight: 60px;
+}
+
+body{
+  background-image: linear-gradient(to right, var(--darkcolor1), var(--darkcolor2));
+}
+
+.App{
+  padding: 10vh 26vw;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.title{
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.title h1{
+  color: var(--lightcolor1);
+  letter-spacing: 3px;
+  word-spacing: 7px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.title h1 input{
+  color: var(--lightcolor2);
+  background-color: transparent;
+  border: none;
+  border-style: none;
+  height: 40px;
+  font-size: 1.3rem;
+  flex-grow: 1;
+  text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+form{
+  margin: 40px 0;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-wrap: wrap;
+  position: relative;
 }
 
-.App-link {
-  color: #61dafb;
+#todo-text{
+  height: var(--inputHeight);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+#options{
+  background-color: transparent;
+  color: var(--lightcolor3);
+  margin-left: 2%;
+  border: none;
+}
+
+#todo-text{
+  width: 80%;
+  border: 2px solid var(--lightcolor3);
+  background-color: transparent;
+  border-radius: 100px;
+  color: var(--lightcolor1);
+  font-size: 1.3rem;
+  padding: 10px;
+}
+
+#plus-sign{
+  position: absolute;
+  right: 145px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--lightcolor3);
+  cursor: pointer;
+}
+
+#plus-sign:hover{
+  color: var(--lightcolor2);
+}
+
+.todo-list{
+  max-height: 50vh;
+  overflow-y: scroll;
+}
+.todo-list::-webkit-scrollbar {
+  width: 5px;
+}
+.todo-list::-webkit-scrollbar-track {
+  color: transparent;
+}
+.todo-list::-webkit-scrollbar-thumb {
+  background: var(--lightcolor3);
+  border-radius: 30px;
+}
+
+.todo{
+  display: grid;
+  grid-template-columns: 85% 5% 5%;
+  align-items: center;
+  column-gap: 15px;
+}
+
+
+.todo-text{
+  padding: 10px;
+  color: var(--lightcolor1);
+  border-left: 3px solid var(--lightcolor2);
+  overflow-x: scroll;
+  font-size: 1.3rem;
+}
+.todo-text::-webkit-scrollbar {
+  height: 5px;
+}
+.todo-text::-webkit-scrollbar-track {
+  color: transparent;
+}
+.todo-text::-webkit-scrollbar-thumb {
+  background: var(--lightcolor3);
+  border-radius: 30px;
+}
+
+.todo-text.true{
+  text-decoration: line-through;
+}
+
+.todo-text:not(:last-child){
+  margin-bottom: 5px;
+}
+
+#check{
+  color: rgb(6, 168, 0);
+  cursor: pointer;
+}
+
+.check.true{
+  display: none;
+}
+
+#trash{
+  color: rgb(207, 0, 0);
+  cursor: pointer;
+}
+
+.undo{
+  color: rgb(255, 230, 0);
+  cursor: pointer;
+}
+
+.undo.false{
+  display: none;
+}
+
+.files{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.files a{
+  text-decoration: none;
+  color: var(--lightcolor1);
+}
+.files a:hover{
+  color: var(--lightcolor2);
+}
+
+@media screen and (max-width: 1178px){
+  .App{
+    padding: 5vh 1vw;
   }
-  to {
-    transform: rotate(360deg);
+  #plus-sign{
+    right: calc(20%);
+  }
+}
+
+@media screen and (max-width: 571px){
+  .App{
+    padding: 5vh 1vw;
+  }
+  #plus-sign{
+    right: calc(15%);
+    transform: translateY(-70%);
+  }
+  .todo{
+    grid-template-columns: 10fr 1fr 1fr;
   }
 }
